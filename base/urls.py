@@ -12,4 +12,5 @@ urlpatterns = [
     path('order/<int:pk>/', OrderApiView.as_view({'get':'retrieve','put':'update','delete':'destroy'}), name='order'),
     path('login/',Login),
     path('register/',register),
+    path('role/',group),
 ]
