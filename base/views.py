@@ -16,18 +16,24 @@ from django.contrib.auth.models import Group
 class BookGenreApiView(ModelViewSet):
     queryset = Book_genre.objects.all()
     serializer_class = BooksGenreSerializer
+    search_fields = ['name']
     
 class AuthorApiView(ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
+    search_fields = ['name']
     
 class BooksApiView(ModelViewSet):
     queryset = Books.objects.all()
     serializer_class = BooksSerializer
+    filterset_fields = ['genre','author']
+    search_fields = ['name']
     
 class OrderApiView(ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    filterset_fields = ['book']
+    search_fields = ['book']
     
 @api_view(['POST'])
 @permission_classes([AllowAny,]) #This permission class should always below the api view
